@@ -1,0 +1,66 @@
+{
+  "animation": {
+    "numFrames": 240,
+    "frameRate": 60,
+    "outputDirectory": "frames",
+    "outputFilename": "../../../../video.mp4"
+  },
+  "rendering": {
+    "width": 1280,
+    "height": 720,
+    "backgroundColor": {
+      "r": 5,
+      "g": 15,
+      "b": 35
+    }
+  },
+  "camera": {
+    "scale": 600.0
+  },
+  "cube": {
+    "size": 2.5,
+    "decalFaceIndex": 1,
+    "decalImagePath": "resources/textures/shrek.png",
+    "faceColors": [
+      {
+        "r": 120,
+        "g": 20,
+        "b": 20
+      },
+      {
+        "r": 220,
+        "g": 220,
+        "b": 220
+      },
+      {
+        "r": 20,
+        "g": 120,
+        "b": 20
+      },
+      {
+        "r": 20,
+        "g": 20,
+        "b": 120
+      },
+      {
+        "r": 120,
+        "g": 120,
+        "b": 20
+      },
+      {
+        "r": 120,
+        "g": 20,
+        "b": 120
+      }
+    ]
+  },
+  "rotation": {
+    "speedX": 0.5,
+    "speedY": 1.0,
+    "speedZ": 0.2,
+    "enableX": true,
+    "enableY": true,
+    "enableZ": true,
+    "totalRotation": "5.5pi"
+  }
+}
