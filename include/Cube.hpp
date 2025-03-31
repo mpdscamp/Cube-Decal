@@ -1,8 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "Geometry.hpp"
-#include "Matrix.hpp"
+#include "Math.hpp"
 
 /**
  * 3D Cube representation with vertices and faces

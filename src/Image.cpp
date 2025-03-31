@@ -7,6 +7,11 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
+// Color implementation
+Color::Color(unsigned char r, unsigned char g, unsigned char b)
+    : r(r), g(g), b(b) {
+}
+
 // Default constructor - creates a 1x1 black image
 Image::Image() : width(1), height(1), pixels(1, Color(0, 0, 0)) {}
 

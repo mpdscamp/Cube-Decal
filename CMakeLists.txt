@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(RotatingCubeDecal VERSION 1.0 LANGUAGES CXX)
 
-# Set C++ standard to C++11 or higher
+# Set C++ standard to C++14
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -11,20 +11,14 @@ if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src")
     message(FATAL_ERROR "Source directory '${CMAKE_CURRENT_SOURCE_DIR}/src' not found!")
 endif()
 
-# Define source files explicitly
+# Define source files explicitly (now with our simplified structure)
 set(SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/Color.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/Cube.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/Geometry.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/Homography.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/Math.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/Image.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/Matrix.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/Cube.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/Renderer.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/Logger.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ViewCamera.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/TextureMappingUtils.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/AnimationManager.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/ConfigManager.cpp"
 )
 

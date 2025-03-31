@@ -1,13 +1,46 @@
 #pragma once
 #include "Cube.hpp"
 #include "Image.hpp"
-#include "ViewCamera.hpp"
-#include "ConfigManager.hpp"
+#include "Math.hpp"
 #include <vector>
 #include <array>
 
+// Forward declaration for ConfigManager
+class ConfigManager;
+
 /**
- * Simplified Renderer class - focuses on rendering a cube with optional texture
+ * Camera class for 3D to 2D projection
+ */
+class ViewCamera {
+private:
+    double scale;      // Projection scale factor
+    double centerX;    // Screen center X
+    double centerY;    // Screen center Y
+
+public:
+    /**
+     * Constructor with default values for camera parameters
+     */
+    ViewCamera(double scale = 500.0, double x = 0.0, double y = 0.0);
+
+    /**
+     * Projects a 3D point to 2D screen coordinates
+     */
+    Vec2 projectPoint(const Vec3& point) const;
+
+    // Getters/setters
+    double getScale() const;
+    void setScale(double s);
+
+    double getCenterX() const;
+    void setCenterX(double x);
+
+    double getCenterY() const;
+    void setCenterY(double y);
+};
+
+/**
+ * Renderer class that combines rendering, camera and texture mapping
  */
 class Renderer {
 private:
@@ -19,6 +52,21 @@ private:
 
     // Face colors (configurable)
     std::array<Color, 6> faceColors;
+
+    /**
+     * Maps a texture onto a quadrilateral in the target image
+     *
+     * @param targetImage The image to draw the texture onto
+     * @param textureImage The texture image to map
+     * @param quadVertices The four vertices of the target quadrilateral
+     * @param fallbackColor Color to use if mapping fails
+     */
+    void mapTextureToQuad(
+        Image& targetImage,
+        const Image& textureImage,
+        const std::vector<Vec2>& quadVertices,
+        const Color& fallbackColor
+    );
 
 public:
     /**

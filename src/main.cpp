@@ -2,7 +2,6 @@
 #include <string>
 #include "Cube.hpp"
 #include "Renderer.hpp"
-#include "AnimationManager.hpp"
 #include "Image.hpp"
 #include "Logger.hpp"
 #include "ConfigManager.hpp"
@@ -64,15 +63,12 @@ int main(int argc, char* argv[]) {
 
     LOG_INFO << "Successfully loaded image: " << config.decalImagePath;
 
-    // Create animation manager with configuration
-    AnimationManager animationManager(config);
-
     // Render animation
     LOG_INFO << "Rendering animation with " << config.numFrames << " frames...";
     LOG_INFO << "This will create a " << (config.numFrames / static_cast<double>(config.frameRate))
         << " second video at " << config.frameRate << " fps.";
 
-    animationManager.renderAnimation(renderer, cube, &decalImage);
+    config.renderAnimation(renderer, cube, &decalImage);
 
     LOG_INFO << "Animation complete!";
     return 0;

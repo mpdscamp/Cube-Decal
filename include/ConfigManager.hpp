@@ -2,10 +2,16 @@
 
 #include <string>
 #include <vector>
-#include "Color.hpp"
+#include "Image.hpp"
+#include "Math.hpp"
+#include "Cube.hpp"
+
+// Forward declaration
+class Renderer;
 
 /**
- * Configuration manager class to load and provide access to application settings
+ * Configuration manager class to load, save and provide access to application settings
+ * Also handles animation and video export
  */
 class ConfigManager {
 public:
@@ -76,6 +82,48 @@ public:
      * @return Value in radians, or 0 if parsing failed
      */
     static double parseRotation(const std::string& piString);
+
+    /**
+     * Configure the animation manager with current settings
+     */
+    void configureAnimation();
+
+    /**
+     * Render an animation of a rotating cube
+     *
+     * @param renderer The renderer to use
+     * @param cube The cube to animate
+     * @param decalImage Optional texture to apply to front face
+     */
+    void renderAnimation(Renderer& renderer, Cube& cube, const Image* decalImage = nullptr);
+
+    /**
+     * Create output directory and clean any existing files
+     */
+    void prepareOutputDirectory() const;
+
+    /**
+     * Save a frame to the output directory
+     *
+     * @param frame The image to save
+     * @param frameNumber The frame number (used in filename)
+     */
+    void saveFrame(const Image& frame, int frameNumber) const;
+
+    /**
+     * Create a video from the rendered frames
+     *
+     * @return true if video creation was successful
+     */
+    bool createVideo() const;
+
+    /**
+     * Calculate rotation matrix for a given frame
+     *
+     * @param frame Current frame number
+     * @return Combined rotation matrix
+     */
+    Mat4x4 calculateRotation(int frame) const;
 
 private:
     /**
